@@ -91,6 +91,16 @@ app.get('/api/history', async (req, res) => {
   }
 });
 
+// Clear Sync History
+app.delete('/api/history', async (req, res) => {
+  try {
+    await supabaseService.clearSyncLogs();
+    res.json({ success: true, message: 'History cleared' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.get("/get-token", async (req, res) => {
   try {
     const response = await fetch(

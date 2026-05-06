@@ -138,14 +138,37 @@ function DocumentationView() {
         <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-md">
           <h3 className="text-xl font-bold text-white mb-4">Quick Start Guide</h3>
           <p className="text-slate-400 mb-6 leading-relaxed">
-            NexusCart connects your Shopify catalog directly to your WordPress blog. Using Llama 3.3, it rewrites your product descriptions into highly-converting SEO articles and publishes them automatically via XML-RPC.
+            NexusCart is a professional orchestration engine that bridges the gap between Shopify and WordPress. Here's how it works:
           </p>
+          
+          <ul className="space-y-4 mb-8">
+            <li className="flex gap-4">
+              <div className="flex-none w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">1</div>
+              <p className="text-slate-400 text-sm leading-relaxed"><strong className="text-white">Fetch Inventory:</strong> The app connects to your Shopify store via Admin API to retrieve your latest product catalog.</p>
+            </li>
+            <li className="flex gap-4">
+              <div className="flex-none w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">2</div>
+              <p className="text-slate-400 text-sm leading-relaxed"><strong className="text-white">AI Transformation:</strong> Using Llama 3.3, the system analyzes your product data and generates a high-converting, SEO-optimized landing page script.</p>
+            </li>
+            <li className="flex gap-4">
+              <div className="flex-none w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">3</div>
+              <p className="text-slate-400 text-sm leading-relaxed"><strong className="text-white">WordPress Sync:</strong> The generated content is automatically pushed to your WordPress blog using XML-RPC, including featured images and direct checkout links.</p>
+            </li>
+          </ul>
+
+          <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl mb-8">
+            <h4 className="text-sm font-bold text-indigo-400 uppercase tracking-wider mb-2">Shopify Access</h4>
+            <p className="text-slate-300 text-sm">To view the Shopify store associated with this engine, use the following password:</p>
+            <div className="mt-2 flex items-center gap-2">
+              <code className="bg-indigo-500/10 text-indigo-300 px-3 py-1 rounded border border-indigo-500/30 font-mono text-lg font-bold select-all">13012005</code>
+            </div>
+          </div>
           
           <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">API Endpoints</h4>
           <div className="bg-black/50 border border-slate-800 rounded-lg p-4 font-mono text-sm mb-6">
             <div className="flex justify-between items-center mb-2 border-b border-slate-800 pb-2">
               <span className="text-emerald-400 font-bold">GET</span>
-              <span className="text-slate-300">/api/products</span>
+              <span className="text-slate-300">/api/shopify/products</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-blue-400 font-bold">POST</span>
@@ -168,43 +191,62 @@ function ProfileView() {
     <div className="max-w-3xl">
       <h2 className="text-3xl font-bold text-white mb-8">Profile Settings</h2>
       
-      <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-md">
-        <div className="flex items-center gap-6 mb-8 pb-8 border-b border-slate-800">
-          <div className="h-24 w-24 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 border-4 border-slate-900 shadow-2xl flex items-center justify-center text-3xl font-bold text-white">
-            AD
+      <div className="space-y-6">
+        <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-md">
+          <div className="flex items-center gap-6 mb-8 pb-8 border-b border-slate-800">
+            <div className="h-24 w-24 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 border-4 border-slate-900 shadow-2xl flex items-center justify-center text-3xl font-bold text-white">
+              SS
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-white">Sanidhya Sehgal</h3>
+              <p className="text-slate-400 mb-2">sanidhya@nexuscart.dev</p>
+              <span className="inline-flex items-center rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
+                System Architect
+              </span>
+            </div>
           </div>
-          <div>
-            <h3 className="text-2xl font-bold text-white">Admin User</h3>
-            <p className="text-slate-400 mb-2">admin@nexuscart.dev</p>
-            <span className="inline-flex items-center rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
-              Pro Tier
-            </span>
-          </div>
-        </div>
-        
-        <div className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-slate-400 mb-2">API Key</label>
-            <div className="flex gap-2">
-              <input 
-                type="password" 
-                value="nexus_key_live_placeholder" 
-                readOnly
-                className="flex-1 bg-black/50 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-300 focus:outline-none focus:border-blue-500"
-              />
-              <button className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">
-                Reveal
-              </button>
+
+          <div className="mb-8">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">About Me</h4>
+            <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              I am a Full-Stack Systems Builder specializing in AI-driven automation and middleware orchestration. My focus is on creating seamless data pipelines that transform raw commerce data into sophisticated digital narratives.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-3 bg-slate-800/40 rounded-lg border border-slate-700/50">
+                <p className="text-xs text-slate-500 uppercase font-bold mb-1">Focus</p>
+                <p className="text-sm text-slate-300">AI Orchestration</p>
+              </div>
+              <div className="p-3 bg-slate-800/40 rounded-lg border border-slate-700/50">
+                <p className="text-xs text-slate-500 uppercase font-bold mb-1">Stack</p>
+                <p className="text-sm text-slate-300">MERN / Next.js</p>
+              </div>
             </div>
           </div>
           
-          <div>
-            <label className="block text-sm font-medium text-slate-400 mb-2">Email Notifications</label>
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-6 bg-blue-600 rounded-full relative cursor-pointer">
-                <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+          <div className="space-y-6 pt-8 border-t border-slate-800">
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-2">API Key</label>
+              <div className="flex gap-2">
+                <input 
+                  type="password" 
+                  value="nexus_key_live_****************" 
+                  readOnly
+                  className="flex-1 bg-black/50 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-300 focus:outline-none focus:border-blue-500"
+                />
+                <button className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">
+                  Reveal
+                </button>
               </div>
-              <span className="text-sm text-slate-300">Receive sync failure alerts</span>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-2">Email Notifications</label>
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-6 bg-blue-600 rounded-full relative cursor-pointer">
+                  <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                </div>
+                <span className="text-sm text-slate-300">Receive sync failure alerts</span>
+              </div>
             </div>
           </div>
         </div>

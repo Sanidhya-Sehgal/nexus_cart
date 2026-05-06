@@ -1,7 +1,7 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { fetchSyncHistory } from '@/lib/api';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { fetchSyncHistory, clearSyncHistory } from '@/lib/api';
 import {
   Table,
   TableBody,
@@ -10,15 +10,30 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Clock } from 'lucide-react';
+import { ExternalLink, Clock, Trash2 } from 'lucide-react';
 import { format } from 'date-fns';
+import { toast } from 'sonner';
 
 export default function SyncHistory() {
+  const queryClient = useQueryClient();
+
   const { data: logs, isLoading, isError } = useQuery({
     queryKey: ['syncHistory'],
     queryFn: fetchSyncHistory,
-    refetchInterval: 5000, // Refresh every 5 seconds
+    refetchInterval: 5000,
+  });
+
+  const clearMutation = useMutation({
+    mutationFn: clearSyncHistory,
+    onSuccess: () => {
+      toast.success('Activity log cleared successfully');
+      queryClient.invalidateQueries({ queryKey: ['syncHistory'] });
+    },
+    onError: () => {
+      toast.error('Failed to clear activity log');
+    }
   });
 
   if (isLoading) {
@@ -39,11 +54,27 @@ export default function SyncHistory() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-end">
         <div>
           <h2 className="text-2xl font-bold tracking-tight text-white mb-1">Activity Log</h2>
           <p className="text-sm text-slate-400">Recent synchronization events and AI generations.</p>
         </div>
+        {logs && logs.length > 0 && (
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => {
+              if (confirm('Are you sure you want to clear all sync history?')) {
+                clearMutation.mutate();
+              }
+            }}
+            disabled={clearMutation.isPending}
+            className="text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 gap-2 transition-colors"
+          >
+            <Trash2 className="h-4 w-4" />
+            Clear History
+          </Button>
+        )}
       </div>
       <div className="rounded-2xl border border-slate-800/60 bg-slate-900/40 backdrop-blur-xl overflow-hidden shadow-2xl">
         <Table>

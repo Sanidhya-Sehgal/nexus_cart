@@ -40,6 +40,19 @@ const supabaseService = {
     }
     return data;
   },
+
+  clearSyncLogs: async () => {
+    const { data, error } = await supabase
+      .from('sync_logs')
+      .delete()
+      .neq('id', '00000000-0000-0000-0000-000000000000'); // Deletes everything (hack for Supabase delete all)
+
+    if (error) {
+      console.error('Error clearing logs from Supabase:', error);
+      throw new Error('Failed to clear sync logs');
+    }
+    return data;
+  },
 };
 
 module.exports = supabaseService;
