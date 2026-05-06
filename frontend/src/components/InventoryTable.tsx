@@ -118,7 +118,7 @@ export default function InventoryTable() {
                     disabled={syncMutation.isPending}
                     onClick={() => syncMutation.mutate(product)}
                   >
-                    {syncMutation.isPending ? (
+                    {syncMutation.isPending && syncMutation.variables?.id === product.id ? (
                       <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Drafting...</>
                     ) : (
                       <><Zap className="h-4 w-4 mr-2" /> Sync via AI</>
