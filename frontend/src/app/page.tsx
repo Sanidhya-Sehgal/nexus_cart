@@ -199,14 +199,14 @@ function ProfileView() {
             </div>
             <div>
               <h3 className="text-2xl font-bold text-white">Sanidhya Sehgal</h3>
-              <p className="text-slate-400 mb-2">sanidhya@nexuscart.dev</p>
+              <p className="text-slate-400 mb-2">sanidhyasehgal005@gmail.com</p>
               <span className="inline-flex items-center rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
                 System Architect
               </span>
             </div>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 pb-8 border-b border-slate-800">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">About Me</h4>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
               I am a Full-Stack Systems Builder specializing in AI-driven automation and middleware orchestration. My focus is on creating seamless data pipelines that transform raw commerce data into sophisticated digital narratives.
@@ -223,22 +223,7 @@ function ProfileView() {
             </div>
           </div>
           
-          <div className="space-y-6 pt-8 border-t border-slate-800">
-            <div>
-              <label className="block text-sm font-medium text-slate-400 mb-2">API Key</label>
-              <div className="flex gap-2">
-                <input 
-                  type="password" 
-                  value="nexus_key_live_****************" 
-                  readOnly
-                  className="flex-1 bg-black/50 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-300 focus:outline-none focus:border-blue-500"
-                />
-                <button className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">
-                  Reveal
-                </button>
-              </div>
-            </div>
-            
+          <div className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-slate-400 mb-2">Email Notifications</label>
               <div className="flex items-center gap-3">
